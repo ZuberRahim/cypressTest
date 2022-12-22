@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
         
 jobs:
-  Cypress-Run:
+  cypress-run:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
