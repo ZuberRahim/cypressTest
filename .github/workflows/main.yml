@@ -2,21 +2,11 @@ name: Cypress Tests
 
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environment to run your test against'
-        type: environment
-        required: false
         
 jobs:
   log-the-inputs:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "Environment: $ENVIRONMENT"
-        env:
-          ENVIRONMENT: ${{ inputs.environment }}
-      
       - name: checkout
         uses: actions/checkout@v2
       
