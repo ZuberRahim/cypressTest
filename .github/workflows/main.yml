@@ -12,7 +12,8 @@ jobs:
       
       - name: npx cypress run
         uses: cypress-io/github-actions@v2
+
         with:
-          build: npm run build
-          start: npm start
+          command: npx cypress run
+    
           
