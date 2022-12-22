@@ -6,7 +6,7 @@ on:
       environment:
         description: 'Environment to run your test against'
         type: environment
-        required: true
+        required: false
         
 jobs:
   log-the-inputs:
