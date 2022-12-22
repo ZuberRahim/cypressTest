@@ -18,3 +18,5 @@ describe("AutoLogin", () => {
     // cy.get('[data-testid="Grid"]').should("be.visible");
   });
 });
+
+//I am adding this here as a test
