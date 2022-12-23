@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Cypress Dashboard Tests
 
 on:
   workflow_dispatch:
