@@ -2,16 +2,14 @@ name: Cypress Tests
 
 on:
   workflow_dispatch:
-  inputs:
-    environment:
-      description: 'Environment to run tests against'
-      type: environment
-      required: true
-      default: 'master'
-      type: choice
-      options:
-        - main
-        - regressionBranch
+    inputs:
+      environment:
+        description: 'Environment to run tests against'
+        required: true
+        type: choice
+        options:
+          - main
+          - regressionBranch
         
 jobs:
   cypress-run:
@@ -25,8 +23,6 @@ jobs:
 
         with:
           command: npx cypress run --record --key a0ad4936-d23a-4ef3-9290-7ec9da29c701
-          
-        env:
           Environment: ${{ inputs.environment }}
     
           
