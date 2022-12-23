@@ -8,5 +8,6 @@ module.exports = defineConfig({
     specPattern: "cypress/integration/automatedUI-Testing/*.{js,jsx,ts,tsx}",
     chromeWebSecurity: false,
   },
+  projectID: "ymeiwv",
   retries: 2,
 });
