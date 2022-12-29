@@ -18,5 +18,3 @@ describe("AutoLogin", () => {
     // cy.get('[data-testid="Grid"]').should("be.visible");
   });
 });
-
-//Regression for 27/12/22
