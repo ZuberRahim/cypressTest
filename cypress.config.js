@@ -9,4 +9,5 @@ module.exports = defineConfig({
     chromeWebSecurity: false,
   },
   retries: 2,
+  projectId: "ymeiwv",
 });
