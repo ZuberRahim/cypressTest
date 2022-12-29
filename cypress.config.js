@@ -10,5 +10,4 @@ module.exports = defineConfig({
   },
   projectId: "ymeiwv",
   retries: 2,
-  projectId: "ymeiwv",
 });
