@@ -1,7 +1,7 @@
 //< reference types="cypress" />;
 
 describe("Creating a", () => {
-  it("Hospital Sheet", () => {
+  it("Anesthesia Sheet", () => {
     cy.login("team@vetradar.com", "Spacedog123");
     cy.get('[data-testid^="PatientListCard_').eq(0).click();
     cy.get('[data-testid="Grid"]').should("be.visible");
