@@ -14,4 +14,4 @@ jobs:
         uses: cypress-io/github-action@v5
 
         with:
-          command: npx cypress run --record --key a0ad4936-d23a-4ef3-9290-7ec9da29c701
+          command: npx cypress run --record --key a0ad4936-d23a-4ef3-9290-7ec9da29c701 --parallel
