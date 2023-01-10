@@ -6,6 +6,8 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    matrix:
+      job: [0, 1, 2, 3]
     steps:
       - name: checkout
         uses: actions/checkout@v3
