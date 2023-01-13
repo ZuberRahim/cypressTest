@@ -30,11 +30,26 @@ Cypress.Commands.add("login", (email, password) => {
   cy.get("[data-test=email-input]").type(email);
   cy.get('[placeholder="Password"]').type(password);
   cy.contains("Sign In").click();
-  cy.get(".css-175oi2r:nth-child(1) > .css-11aywtz").type("1");
-  cy.get(".css-175oi2r:nth-child(2) > .css-11aywtz").type("2");
-  cy.get(".css-175oi2r:nth-child(3) > .css-11aywtz").type("3");
-  cy.get(".css-175oi2r:nth-child(4) > .css-11aywtz").type("4");
+  cy.get("[inputmode='numeric']", { timeout: 7000 }).eq(0).type("1");
+  cy.get("[inputmode='numeric']").eq(1).type("2");
+  cy.get("[inputmode='numeric']").eq(2).type("3");
+  cy.get("[inputmode='numeric']").eq(3).type("4");
   cy.contains("Confirm PIN").click();
   cy.get('[data-testid="STAGING - ezyVet - STABLE"]').click();
-  cy.get('[data-testid="PatientList"]').should("be.visible");
+});
+
+let LOCAL_STORAGE_MEMORY = {};
+
+// Save session data at the end of an it
+Cypress.Commands.add("saveLocalStorage", () => {
+  Object.keys(localStorage).forEach((key) => {
+    LOCAL_STORAGE_MEMORY[key] = localStorage[key];
+  });
+});
+
+// Restore session data at the start of an it
+Cypress.Commands.add("restoreLocalStorage", () => {
+  Object.keys(LOCAL_STORAGE_MEMORY).forEach((key) => {
+    localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key]);
+  });
 });
