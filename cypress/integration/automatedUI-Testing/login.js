@@ -39,6 +39,34 @@ describe("AutoLogin", () => {
     const dayjs = require("dayjs");
     cy.log(dayjs().format("DD/MM/YYYY"));
   });
+
+  it("Hospital Sheet", () => {
+    cy.restoreLocalStorage();
+    cy.get('[data-testid="IconButton-Patients"]', { timeout: 5000 }).click();
+    cy.get('[data-testid^="PatientListCard_').eq(3).click();
+    cy.get('[data-testid="Grid"]').should("be.visible");
+    cy.get('[data-testid="HeaderHeadline"]').click();
+    cy.contains("+ Create sheet").click();
+    cy.get('[aria-label="Sheet type Select Input"]').click();
+    cy.get('[data-testid="MenuItem_Hospital"]')
+      .should("have.text", "Hospital")
+      .and("be.visible");
+    cy.get('[data-testid="MenuItem_Anesthesia"]')
+      .should("have.text", "Anesthesia")
+      .and("be.visible");
+    cy.get('[data-testid="MenuItem_Anesthesia"]').click();
+    cy.get('[data-testid="SheetNameInput"]').then(($sheetName) => {
+      const sheetInput = $sheetName.val();
+      cy.log(sheetInput);
+
+      cy.get('[data-testid="addSheetButton"]').click();
+      cy.get('[data-testid="HeaderHeadline"]').then(($newSheetName) => {
+        const newSheetName = $newSheetName.text();
+        cy.log(newSheetName);
+        expect(newSheetName).to.include(sheetInput);
+      });
+    });
+  });
 });
 
 //I am adding this here as a test
