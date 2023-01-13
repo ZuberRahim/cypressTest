@@ -2,7 +2,8 @@
 
 describe("AutoLogin", () => {
   it("Login using an admin account with username: team@vetradar.com", () => {
-    cy.login("team@vetradar.com", "Spacedog123");
+    cy.login("team@vetradar.com", "Spacedog123"); // The code for the command login is in  ..>support>commands.js
+
     // cy.visit("https://app.staging.vetradar.com/");
     // cy.get("[data-test=email-input]").type("team@vetradar.com");
     // cy.get('[placeholder="Password"]').type("Spacedog123");
@@ -15,11 +16,12 @@ describe("AutoLogin", () => {
     // cy.get('[data-testid="STAGING - ezyVet - STABLE"]').click();
     // cy.get('[data-testid="PatientList"]').should("be.visible");
     // cy.get('[data-testid^="PatientListCard_').eq(0).click();
-    // cy.get('[data-testid="Grid"]').should("be.visible");
+    cy.get('[data-testid="PatientList"]').should("be.visible");
+    cy.saveLocalStorage();
   });
-  it("Create a Hospital Sheet", () => {
-    cy.login("team@vetradar.com", "Spacedog123");
-    cy.get('[data-testid^="PatientListCard_').eq(0).click();
+  it("Hospital Sheet", () => {
+    cy.restoreLocalStorage();
+    cy.get('[data-testid^="PatientListCard_', { timeout: 5000 }).eq(2).click();
     cy.get('[data-testid="Grid"]').should("be.visible");
     cy.get('[data-testid="HeaderHeadline"]').click();
     cy.contains("+ Create sheet").click();
@@ -34,6 +36,8 @@ describe("AutoLogin", () => {
         expect(newSheetName).to.include(sheetInput);
       });
     });
+    const dayjs = require("dayjs");
+    cy.log(dayjs().format("DD/MM/YYYY"));
   });
 });
 
